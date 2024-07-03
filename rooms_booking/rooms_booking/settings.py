@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*rhnn7eu^^44wk8_hf6c%mgxtbhce%etkgu^&ch-+j$6by*&z7'
+SECRET_KEY = os.getenv('SECRET_KEY', default='SUP3R-S3CR3T-K3Y-F0R-MY-PR0J3CT')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -86,7 +84,7 @@ WSGI_APPLICATION = 'rooms_booking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
-        'NAME': os.getenv('DB_NAME', default='cargotruckdb'),
+        'NAME': os.getenv('DB_NAME', default='postgres'),
         'USER': os.getenv('POSTGRES_USER', default='postgres'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
         'HOST': os.getenv('DB_HOST', default='localhost'),

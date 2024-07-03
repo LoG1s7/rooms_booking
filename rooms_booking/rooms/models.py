@@ -1,12 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
-from django.contrib.auth import get_user_model
 from django.utils import timezone
-from .validators import (
-    check_booking,
-    validate_check_in_date_is_not_past,
-    validate_check_out_date_is_equal_to_check_in_date,
-    validate_check_out_date_is_later_than_check_in_date)
+
+from .validators import (check_booking, validate_check_in_date_is_not_past,
+                         validate_check_out_date_is_equal_to_check_in_date,
+                         validate_check_out_date_is_later_than_check_in_date)
 
 User = get_user_model()
 

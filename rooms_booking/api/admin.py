@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-from rooms.models import Room, Booking
+
+from rooms.models import Booking, Room
 
 User = get_user_model()
 

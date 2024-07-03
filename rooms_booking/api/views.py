@@ -2,10 +2,11 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from rooms.models import Room, Booking
+from rooms.models import Booking, Room
+
+from .filters import RoomFilter
 from .permissions import IsAdminOrReadOnlyPermission
 from .serializers import BookingSerializer, RoomSerializer
-from .filters import RoomFilter
 
 
 class RoomViewSet(viewsets.ModelViewSet):
