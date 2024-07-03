@@ -1,7 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, viewsets
 from rest_framework.permissions import IsAuthenticated
-
 from rooms.models import Booking, Room
 
 from .filters import RoomFilter
@@ -13,13 +12,10 @@ class RoomViewSet(viewsets.ModelViewSet):
     serializer_class = RoomSerializer
     queryset = Room.objects.all()
     permission_classes = [IsAdminOrReadOnlyPermission]
-    filter_backends = (
-        DjangoFilterBackend,
-        filters.OrderingFilter
-    )
+    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
     filterset_class = RoomFilter
-    ordering_fields = ('cost_per_day', 'number_of_beds')
-    ordering = ('cost_per_day',)
+    ordering_fields = ("cost_per_day", "number_of_beds")
+    ordering = ("cost_per_day",)
 
 
 class BookingViewSet(viewsets.ModelViewSet):
