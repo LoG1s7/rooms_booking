@@ -3,9 +3,11 @@ from rooms.models import Booking, Room
 
 
 class BookingSerializer(serializers.ModelSerializer):
+    guest = serializers.ReadOnlyField(source="guest.username")
+
     class Meta:
         model = Booking
-        fields = ("id", "room", "guest", "check_in_date", "check_out_date")
+        fields = ("id", "guest", "room", "check_in_date", "check_out_date")
 
     def validate(self, data):
         start_date = data["check_in_date"]
